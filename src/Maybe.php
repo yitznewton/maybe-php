@@ -10,7 +10,7 @@ class Maybe
     protected $value;
 
     /**
-     * @param mixed $value
+     * @param mixed $value The value to wrap in a Maybe
      */
     public function __construct($value)
     {
@@ -18,6 +18,8 @@ class Maybe
     }
 
     /**
+     * Return the main value, or an alternative if null
+     *
      * @param mixed $alternative
      * @return mixed
      */
@@ -31,7 +33,9 @@ class Maybe
     }
 
     /**
-     * @param callable $alternativeCallback
+     * Return the main value, or run & return a callback if null
+     *
+     * @param callable $alternativeCallback A callback to run and return if the main value is null
      * @return mixed
      */
     public function valueOrCallback(callable $alternativeCallback)
@@ -44,10 +48,12 @@ class Maybe
     }
 
     /**
-     * @param $callback
+     * Apply a callback to the main value, and return the result wrapped in a new Maybe
+     *
+     * @param callable $callback
      * @return self
      */
-    public function select($callback)
+    public function select(callable $callback)
     {
         if ($this->isNothing()) {
             return $this;
