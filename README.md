@@ -43,6 +43,16 @@ $blogpost = new \Yitznewton\Maybe\Maybe($repository->get($blogpostId));
 echo $blogpost->select(function ($bp) { $bp->teaser(); })->valueOr('No blogpost found');
 ```
 
+## Loose-falsy example
+
+```php
+// $process->execute() normally returns a result object, but sometimes returns false
+$result = new LooseMaybe($process->execute());
+
+echo $result->select(function ($resultObject) { $resultObject->getStatus(); })->valueOr('failed');
+// echoes 'failed' when the result was false
+```
+
 ## Callback example
 
 ```php
