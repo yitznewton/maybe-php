@@ -9,6 +9,6 @@ class LooseMaybe extends Maybe
      */
     protected function isNothing()
     {
-        return !((bool) $this->value);
+        return !$this->value;
     }
 }
