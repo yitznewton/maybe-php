@@ -43,6 +43,15 @@ class Maybe
         return $this->value;
     }
 
+    public function select($callback)
+    {
+        if ($this->isNothing()) {
+            return $this;
+        }
+
+        return new self($callback($this->value));
+    }
+
     /**
      * @return bool
      */
