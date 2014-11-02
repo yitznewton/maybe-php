@@ -1,4 +1,4 @@
-![Travis build status](http://img.shields.io/travis/yitznewton/php-maybe.svg)
+![Travis build status](http://img.shields.io/travis/yitznewton/maybe-php.svg)
 ![PHP 5.3 not supported](http://img.shields.io/badge/5.3-not_supported-red.svg)
 ![PHP 5.4 supported](http://img.shields.io/badge/5.4-supported-green.svg)
 ![PHP 5.5 supported](http://img.shields.io/badge/5.5-supported-green.svg)
