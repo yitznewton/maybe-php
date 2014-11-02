@@ -1,3 +1,11 @@
+![Travis build status](http://img.shields.io/travis/yitznewton/php-maybe.svg)
+![PHP 5.3 not supported](http://img.shields.io/badge/5.3-not_supported-red.svg)
+![PHP 5.4 supported](http://img.shields.io/badge/5.4-supported-green.svg)
+![PHP 5.5 supported](http://img.shields.io/badge/5.5-supported-green.svg)
+![PHP 5.6 supported](http://img.shields.io/badge/5.6-supported-green.svg)
+![HHVM tested](http://img.shields.io/hhvm/yitznewton/maybe-php.svg)
+![BSD 2-Clause license](http://img.shields.io/packagist/l/yitznewton/maybe-php.svg)
+
 # A Maybe monad implementation for PHP
 
 This project was wholly inspired by
