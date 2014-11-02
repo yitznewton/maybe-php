@@ -27,7 +27,7 @@ PHP does not offer pattern matching, but we can still use classes to wrap raw
 values, and require us to handle null conditions, without repeated explicit
 null checking and conditionals.
 
-## Example
+## Simple example
 
 Before:
 
@@ -41,4 +41,14 @@ After:
 ```php
 $blogpost = new \Yitznewton\Maybe\Maybe($repository->get($blogpostId));
 echo $blogpost->select(function ($bp) { $bp->teaser(); })->valueOr('No blogpost found');
+```
+
+## Callback example
+
+```php
+$blogpost = new \Yitznewton\Maybe\Maybe($repository->get($blogpostId));
+$callback = function () {
+    return someExpensiveOperation();
+};
+echo $blogpost->select(function ($bp) { $bp->teaser(); })->valueOrCallback($callback);
 ```
