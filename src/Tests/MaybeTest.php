@@ -9,12 +9,28 @@ class MaybeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function valueOrWithNull()
+    public function valueOrWithValue()
     {
-        $value = null;
-        $default = 'b';
+        $value = 'a';
+        $alternative = 'b';
         $maybe = new Maybe($value);
 
-        $this->assertSame($default, $maybe->valueOr($default));
+        $this->assertEquals($value, $maybe->valueOr($alternative));
+    }
+
+    /**
+     * @test
+     */
+    public function valueOrCallbackWithNull()
+    {
+        $value = null;
+        $alternativeValue = 'b';
+        $alternativeCallback = function () use ($alternativeValue) {
+            return $alternativeValue;
+        };
+
+        $maybe = new Maybe($value);
+
+        $this->assertSame($alternativeValue, $maybe->valueOrCallback($alternativeCallback));
     }
 }
