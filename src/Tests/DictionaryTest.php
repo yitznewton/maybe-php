@@ -15,9 +15,9 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $value = 'bar';
         $alternative = 'baz';
 
-        $valueObject = new Dictionary([$key => $value]);
+        $dictionary = new Dictionary([$key => $value]);
 
-        $this->assertEquals($value, $valueObject->$key->valueOr($alternative));
+        $this->assertEquals($value, $dictionary->$key->valueOr($alternative));
     }
 
     /**
@@ -28,9 +28,9 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $key = 'foo';
         $alternative = 'baz';
 
-        $valueObject = new Dictionary([]);
+        $dictionary = new Dictionary([]);
 
-        $this->assertEquals($alternative, $valueObject->$key->valueOr($alternative));
+        $this->assertEquals($alternative, $dictionary->$key->valueOr($alternative));
     }
 
     /**
@@ -42,9 +42,9 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
         $value = false;
         $alternative = 'baz';
 
-        $valueObject = new Dictionary([$key => $value], '\\Yitznewton\\Maybe\\LooseMaybe');
+        $dictionary = new Dictionary([$key => $value], '\\Yitznewton\\Maybe\\LooseMaybe');
 
-        $this->assertEquals($alternative, $valueObject->$key->valueOr($alternative));
+        $this->assertEquals($alternative, $dictionary->$key->valueOr($alternative));
     }
 
     /**
