@@ -46,4 +46,22 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($alternative, $valueObject->$key->valueOr($alternative));
     }
+
+    /**
+     * @test
+     */
+    public function invalidMaybeClass()
+    {
+        $this->setExpectedException('\\UnexpectedValueException');
+        new Dictionary([], '\\Yitznewton\\Maybe\\Dictionary');
+    }
+
+    /**
+     * @test
+     */
+    public function nonexistentMaybeClass()
+    {
+        $this->setExpectedException('\\UnexpectedValueException');
+        new Dictionary([], 'nosuchclass');
+    }
 }
