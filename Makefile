@@ -11,7 +11,6 @@ composer-validate:
 phpcs:
 	./vendor/bin/phpcs --standard=psr2 ./src
 
-
 phpmd:
 	./vendor/bin/phpmd src/ text codesize,controversial,design,naming,unusedcode
 
@@ -19,4 +18,4 @@ php-cs-fixer:
 	./vendor/bin/php-cs-fixer --dry-run --verbose fix src --fixers=unused_use
 
 phpunit:
-	./vendor/bin/phpunit
+	./vendor/bin/phpunit --testsuite=testing

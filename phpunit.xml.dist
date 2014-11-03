@@ -12,10 +12,18 @@
          verbose="true"
         >
     <testsuites>
-        <testsuite>
+        <testsuite name="testing">
             <directory>./src/Tests/</directory>
+            <exclude>./src/Tests/Profiling/</exclude>
+        </testsuite>
+        <testsuite name="profiling">
+            <directory>./src/Tests/Profiling/</directory>
         </testsuite>
     </testsuites>
+
+    <php>
+        <const name="XHPROF_UTILS_DIR" value="/usr/local//Cellar/php55-xhprof/254eb24/xhprof_lib/utils/" />
+    </php>
 
     <filter>
         <blacklist>

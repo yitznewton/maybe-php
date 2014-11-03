@@ -27,7 +27,9 @@ PHP does not offer pattern matching, but we can still use classes to wrap raw
 values, and require us to handle null conditions, without repeated explicit
 null checking and conditionals.
 
-## Simple example
+## Examples
+
+### Simple
 
 Before:
 
@@ -43,7 +45,17 @@ $blogpost = new \Yitznewton\Maybe\Maybe($repository->get($blogpostId));
 echo $blogpost->select(function ($bp) { $bp->teaser(); })->valueOr('No blogpost found');
 ```
 
-## Loose-falsy example
+### With callback
+
+```php
+$blogpost = new \Yitznewton\Maybe\Maybe($repository->get($blogpostId));
+$callback = function () {
+    return someExpensiveOperation();
+};
+echo $blogpost->select(function ($bp) { $bp->teaser(); })->valueOrCallback($callback);
+```
+
+### Loose-falsy
 
 ```php
 // $process->execute() normally returns a result object, but sometimes returns false
@@ -53,12 +65,16 @@ echo $result->select(function ($resultObject) { $resultObject->getStatus(); })->
 // echoes 'failed' when the result was false
 ```
 
-## Callback example
+## Performance
 
-```php
-$blogpost = new \Yitznewton\Maybe\Maybe($repository->get($blogpostId));
-$callback = function () {
-    return someExpensiveOperation();
-};
-echo $blogpost->select(function ($bp) { $bp->teaser(); })->valueOrCallback($callback);
+In a simple test using PHP 5.5, performance was approximately **20%** that of
+a straight `is_null()` check in an if/else conditional. In other words it
+takes 5 times as long to run.
+
+You can reproduce the test locally by running the profiling testsuite in
+PHPUnit. You will first need to install XHProf, and override the XHProf lib
+directory using a local `phpunit.xml` config.
+
+```shell
+$ ./vendor/bin/phpunit --testsuite=profiling
 ```
