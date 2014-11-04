@@ -78,3 +78,26 @@ directory using a local `phpunit.xml` config.
 ```shell
 $ ./vendor/bin/phpunit --testsuite=profiling
 ```
+
+## Dictionary wrapper
+
+maybe-php includes an array wrapper called `Dictionary`, whereby trying to
+access properties on the wrapper will return a `Maybe` object. You can specify
+whether to return a plain `Maybe` (default) or a `LooseMaybe`.
+
+```php
+$dictionary = new \Yitznewton\Maybe\Dictionary[
+    'foo' => 'bar',
+]);
+
+$dictionary->foo->valueOr('quux');        // 'bar'
+$dictionary->noSuchKey->valueOr('quux');  // 'quux'
+
+// with LooseMaybe
+
+$dictionary = new \Yitznewton\Maybe\Dictionary[
+    'foo' => false,
+], \Yitznewton\Maybe\LooseMaybe::class);
+
+$dictionary->foo->valueOr('quux'); // 'quux', because loose falsy
+```
