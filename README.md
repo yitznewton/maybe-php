@@ -86,7 +86,7 @@ access properties on the wrapper will return a `Maybe` object. You can specify
 whether to return a plain `Maybe` (default) or a `LooseMaybe`.
 
 ```php
-$dictionary = new \Yitznewton\Maybe\Dictionary[
+$dictionary = new \Yitznewton\Maybe\Dictionary([
     'foo' => 'bar',
 ]);
 
@@ -95,7 +95,7 @@ $dictionary->noSuchKey->valueOr('quux');  // 'quux'
 
 // with LooseMaybe
 
-$dictionary = new \Yitznewton\Maybe\Dictionary[
+$dictionary = new \Yitznewton\Maybe\Dictionary([
     'foo' => false,
 ], \Yitznewton\Maybe\LooseMaybe::class);
 
